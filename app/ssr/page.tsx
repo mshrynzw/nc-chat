@@ -1,4 +1,5 @@
-export const dynamic = 'force-dynamic'; // 毎回 SSR させる
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 export default async function SsrPage() {
   const now = new Date().toISOString();
