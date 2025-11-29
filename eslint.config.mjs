@@ -1,18 +1,61 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import typescriptParser from '@typescript-eslint/parser';
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  {
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      '.open-next/**',
+      'out/**',
+      'dist/**',
+      'build/**',
+      'coverage/**',
+      '*.config.{js,mjs,ts}',
+      'scripts/**',
+      'public/sw.js',
+      'cloudflare-env.d.ts',
+    ],
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      parser: typescriptParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+        project: './tsconfig.json',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': typescriptEslint,
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-explicit-any': 'off',
+      'no-console': 'off', // 開発中はconsole.logを許可
+      'no-debugger': 'warn',
+    },
+  },
+  {
+    files: ['**/*.{js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    rules: {
+      'no-console': 'off',
+      'no-debugger': 'warn',
+    },
+  },
+];
 
-export default eslintConfig;

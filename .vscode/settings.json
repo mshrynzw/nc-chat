@@ -1,0 +1,28 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 100,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": true,
+  "prettier.bracketSameLine": false,
+  "prettier.endOfLine": "lf",
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "editor.formatOnSaveMode": "file",
+  "prettier.requireConfig": true,
+  // "prettier.configPath": ".prettierrc.js",
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true
+}
